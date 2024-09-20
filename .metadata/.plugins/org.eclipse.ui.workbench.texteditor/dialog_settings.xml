@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Session"/>
+		<item key="selection" value="&#x09;  $.ajax({"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="&#x09;  $.ajax({"/>
 			<item value="session"/>
 			<item value="dispatcher.addMapping"/>
 			<item value="addMapping"/>
@@ -15,14 +16,6 @@
 			<item value="selectMe"/>
 			<item value="mybatis"/>
 			<item value="mybtis"/>
-			<item value="javadoc"/>
-			<item value="compiler"/>
-			<item value="maven3"/>
-			<item value="easymock"/>
-			<item value="junit"/>
-			<item value="googlecode"/>
-			<item value="properties"/>
-			<item value="DispatcherServlet"/>
 		</list>
 		<list key="replacehistory">
 		</list>

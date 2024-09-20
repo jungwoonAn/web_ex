@@ -6,6 +6,7 @@
 		<item value="Apache Tomcat v9.0"/>
 	</list>
 	<list key="J2EE_EXPORT_JST_WEB">
+		<item value="C:\Users\m11\Downloads\MVC06.war"/>
 		<item value="C:\eGovFrame-4.2.0\my_src\MVC05.war"/>
 		<item value="C:\eGovFrame-4.2.0\MVC04.war"/>
 		<item value="C:\eGovFrame-4.2.0\MVC03.war"/>
@@ -13,6 +14,7 @@
 		<item value="C:\eGovFrame-4.2.0\MVC01.war"/>
 	</list>
 	<list key="J2EE_IMPORT_null">
+		<item value="C:\Users\m11\Downloads\MVC06.war"/>
 		<item value="C:\eGovFrame-4.2.0\my_src\MVC05.war"/>
 		<item value="C:\eGovFrame-4.2.0\my_src\MVC04.war"/>
 		<item value="C:\eGovFrame-4.2.0\MVC01.war"/>

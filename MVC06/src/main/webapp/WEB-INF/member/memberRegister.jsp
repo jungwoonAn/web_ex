@@ -81,7 +81,12 @@
 		</form>  
       </div>
       <div class="card-footer text-center">
-        <button type="button" class="btn btn-primary" onclick="add()">가입</button>
+        <c:if test="${sessionScope.userId==null || sessionScope.userId==''}">
+          <button type="button" class="btn btn-primary" onclick="add()">가입</button>
+        </c:if>
+        <c:if test="${sessionScope.userId!=null && sessionScope.userId!=''}">
+          <button type="button" class="btn btn-primary" onclick="add()" disabled>가입</button>
+        </c:if>
 		<button type="button" class="btn btn-warning" onclick="frmreset()">취소</button>
 		<button type="button" onclick="location.href='${ctx}/memberList.do'" class="btn btn-success">리스트</button>
       </div>
