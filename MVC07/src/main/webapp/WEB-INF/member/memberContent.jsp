@@ -23,6 +23,10 @@
   function frmreset(){
 	  document.form1.reset();
   }
+  
+  function getFile(filename){
+	  location.href="<c:url value='/fileGet.do'/>?filename="+filename;
+  }
 </script>
 <title>회원 정보</title>
 </head>
@@ -31,10 +35,11 @@
     <h2>상세 화면</h2>   
     <div class="card">
       <div class="card-header">
-        <c:if test="${sessionScope.userId != null && scssionScope.userId != ''}">
+        <c:if test="${sessionScope.userId != null && scssionScope.userId != '' && sessionScope.userId == vo.id}">
+          <img alt="image" src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px">
 	      <label>${sessionScope.userName}님이 로그인 하셨습니다.</label>
 	    </c:if>
-	    <c:if test="${sessionScope.userId == null || scssionScope.userId == ''}">
+	    <c:if test="${sessionScope.userId == null || scssionScope.userId == '' || sessionScope.userId != vo.id}">
 	      <label>안녕하세요~</label>
 	    </c:if>
       </div>
@@ -82,6 +87,19 @@
 	          <div class="col-sm-10">
 	            <input type="text" class="form-control" id="phone" name="phone" value="${vo.phone}" style="width:50%">
 	          </div>
+	        </div>
+	        <div class="row mb-3">
+	          <label class="col-form-label col-sm-2">첨부파일 : </label>
+	          <div class="col-sm-10">              
+	            <input type="file" class="form-control" id="file" name="file">
+	            <input type="hidden" class="form-control" id="filename" name="filename" value=""><br>
+                <c:if test="${vo.filename != null && vo.filename != ''}">
+                  <a href="javascript:getFile('${vo.filename}')"><c:out value="${vo.filename}" /></a>
+                </c:if>
+	            <c:if test="${!empty sessionScope.userId && sessionScope.userId == vo.id && vo.filename != null && vo.filename != ''}">
+	               <button class="btn-close" aria-label="Close"></button><br>	              
+	            </c:if>
+	          </div>	          
 	        </div>
 		</form>  
 	  </div>

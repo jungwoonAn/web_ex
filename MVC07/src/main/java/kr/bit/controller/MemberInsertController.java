@@ -45,8 +45,9 @@ public class MemberInsertController implements Controller {
 		int cnt = -1;
 		if(request.getParameter("mode").equals("fadd")) {
 			cnt = dao.memberInsertFile(vo);  // 파일이름을 저장해야하는 경우
+		}else {			
+			cnt = dao.memberInsert(vo);  // 파일이름을 저장할 필요가 없는 경우
 		}
-		cnt = dao.memberInsert(vo);  // 파일이름을 저장할 필요가 없는 경우
 		String nextPage = null;
 		
 		if(cnt > 0) {

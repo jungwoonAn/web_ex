@@ -98,6 +98,14 @@
   }
 </script>
 <title>회원 목록</title>
+<style type="text/css">
+  table td{
+    vertical-align: middle;
+  }
+  table th {
+    text-align: center;
+  }
+</style>
 </head>
 <body>
 <div class="container">
@@ -140,6 +148,7 @@
 		        <th>나이</th>
 		        <th>이메일</th>
 		        <th>전화번호</th>
+		        <th>이미지</th>
 		        <th>삭제</th>
 		      </tr>      
 		    </thead>
@@ -153,6 +162,10 @@
 		            <td>${vo.age}</td>
 		            <td>${vo.email}</td>
 		            <td>${vo.phone}</td>
+		            <td>
+		              <c:if test="${vo.filename != null && vo.filename != '' }">
+ 		                <img alt="image" src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px"></td>
+		              </c:if>
 		            <c:if test="${sessionScope.userId == vo.id}">		            
 		              <td><button onclick="deleteFn(${vo.num})" class="btn btn-danger">삭제</button></td>
 		            </c:if>
@@ -164,7 +177,7 @@
 		    </tbody>
 		    <tfoot>
 		      <tr>
-		        <td colspan="8">
+		        <td colspan="9">
 		          <c:if test="${sessionScope.userId == null || sessionScope.userId == ''}">		            
 		            <button class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'">회원가입</button>
 		          </c:if>
