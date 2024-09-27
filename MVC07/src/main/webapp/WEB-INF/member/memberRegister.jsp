@@ -39,13 +39,13 @@
 				  // alert(data);
 				  $('#filename').val(data);
 			  	  document.form1.action="<c:url value='/memberInsert.do' />?mode=fadd";
-			  	  document.form1.submit();  // id, pass, name, age, email, phone, filename
+			  	  document.form1.submit();  // num, id, pass, name, age, email, phone, filename
 			  },
 			  error: function(){alert('error');}
 		  });
 	  }else {  // 파일이 첨부되지 않은 경우
 		  document.form1.action="<c:url value='/memberInsert.do' />?mode=add";
-	  	  document.form1.submit();  // id, pass, name, age, email, phone
+	  	  document.form1.submit();  // num, id, pass, name, age, email, phone
 	  }
 	  
   }

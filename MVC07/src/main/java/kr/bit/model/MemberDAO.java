@@ -1,8 +1,6 @@
 package kr.bit.model;
 import java.io.InputStream;
-// JDBC -> myBatis
-import java.sql.*;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import org.apache.ibatis.io.Resources;
@@ -69,7 +67,7 @@ public class MemberDAO {
 		return vo;
 	}
 	
-	// 회원 수정하기
+	// 회원 수정하기(업로드 파일 x)
 	public int memberUpdate(MemberVO vo) {
 		SqlSession session = sqlSessionFactory.openSession();
 		int cnt = session.update("memberUpdate", vo);
@@ -96,6 +94,24 @@ public class MemberDAO {
 			idDouble = "yes";
 		}
 		return idDouble;  // yes(중복), no(중복아님)
+	}
+
+	// 이미지파일 삭제(update)
+	public int memberDeleteFile(int num) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberDeleteFile", num);
+		session.commit();
+		session.close();
+		return cnt;
+	}
+	
+	// 회원 수정하기(업로드 파일 O)
+	public int memberUpdateFile(MemberVO vo) {
+		SqlSession session = sqlSessionFactory.openSession();
+		int cnt = session.update("memberUpdateFile", vo);
+		session.commit();
+		session.close();
+		return cnt;
 	}
 	
 }

@@ -20,17 +20,31 @@ public class MemberUpdateController implements Controller {
 		//파라미터 수집(VO)
 		int num = Integer.parseInt(request.getParameter("num"));
 		String pass = request.getParameter("pass");
+		String name = request.getParameter("name");
+		int age = Integer.parseInt(request.getParameter("age"));
 		String email = request.getParameter("email");
 		String phone = request.getParameter("phone");
 		
-		MemberVO vo = new MemberVO();
+		MemberVO vo = new MemberVO();		
+		if(request.getParameter("mode").equals("fupdate")){
+			String filename = request.getParameter("filename");
+			vo.setFilename(filename);
+		}
 		vo.setNum(num);
 		vo.setPass(pass);
+		vo.setName(name);
+		vo.setAge(age);
 		vo.setEmail(email);
 		vo.setPhone(phone);
 		
-		MemberDAO dao = new MemberDAO();
-		int cnt = dao.memberUpdate(vo);
+		MemberDAO dao = new MemberDAO();		
+		int cnt = -1;
+		if(request.getParameter("mode").equals("fupdate")) {
+			cnt = dao.memberUpdateFile(vo);
+		}else {
+			cnt = dao.memberUpdate(vo);
+		}		
+		
 		String nextPage = null;
 		
 		if(cnt > 0) {

@@ -12,6 +12,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
@@ -20,12 +21,43 @@
 	  document.form1.submit();
   }
   
+  function update2(){
+	  if($('#file').val() != ''){  // 파일이 첨부된 경우
+		  var formData = new FormData();
+		  formData.append('file', $('input[name=file]')[0].files[0]);
+		  
+		  $.ajax({
+			  url: "<c:url value='/fileAdd.do' />",
+			  method: "post",
+			  data: formData,
+			  processData: false,
+			  contentType: false,
+			  success: function(data){  // data: 업로드된 실제 파일 이름
+				  // alert(data);
+				  $('#filename').val(data);
+			  	  document.form1.action="<c:url value='/memberUpdate.do' />?mode=fupdate";
+			  	  document.form1.submit();  // num, pass, name, age, email, phone, filename
+			  },
+			  error: function(){alert('error');}
+		  });
+	  }else {  // 파일이 첨부되지 않은 경우
+		  document.form1.action="<c:url value='/memberUpdate.do' />?mode=update";
+	  	  document.form1.submit();  // num, pass, name, age, email, phone
+	  }
+	  
+  }
+  
   function frmreset(){
 	  document.form1.reset();
   }
   
   function getFile(filename){
 	  location.href="<c:url value='/fileGet.do'/>?filename="+filename;
+  }
+  
+  function delFile(num, filename){
+	  console.log('click')
+	  location.href="<c:url value='/fileDel.do'/>?num="+num+"&filename="+filename;
   }
 </script>
 <title>회원 정보</title>
@@ -36,7 +68,9 @@
     <div class="card">
       <div class="card-header">
         <c:if test="${sessionScope.userId != null && scssionScope.userId != '' && sessionScope.userId == vo.id}">
-          <img alt="image" src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px">
+          <c:if test="${vo.filename != null}">
+          	<img alt="image" src="<c:out value='file_repo/${vo.filename}' />" width="60px" height="60px">
+          </c:if>          
 	      <label>${sessionScope.userName}님이 로그인 하셨습니다.</label>
 	    </c:if>
 	    <c:if test="${sessionScope.userId == null || scssionScope.userId == '' || sessionScope.userId != vo.id}">
@@ -46,6 +80,7 @@
       <div class="card-body">
         <form id="form1" name="form1" class="form-horizontal" method="post">
             <input type="hidden" name="num" value="${vo.num}">
+            <input type="hidden" name="filename" id="filename" value="">
 	        <div class="row mb-3">
 	          <label class="col-form-label col-sm-2">번호 : </label>
 	          <div class="col-sm-10">
@@ -97,7 +132,7 @@
                   <a href="javascript:getFile('${vo.filename}')"><c:out value="${vo.filename}" /></a>
                 </c:if>
 	            <c:if test="${!empty sessionScope.userId && sessionScope.userId == vo.id && vo.filename != null && vo.filename != ''}">
-	               <button class="btn-close" aria-label="Close"></button><br>	              
+	               <a class="btn-close" href="javascript:delFile('${vo.num}', '${vo.filename}')"></a><br>	              
 	            </c:if>
 	          </div>	          
 	        </div>
@@ -106,7 +141,7 @@
 	  <div class="card-footer text-center">
 	    <c:if test="${!empty sessionScope.userId}">
 	      <c:if test="${sessionScope.userId == vo.id}">
-	        <button type="button" class="btn btn-danger" onclick="update()">수정</button>	      
+	        <button type="button" class="btn btn-danger" onclick="update2()">수정</button>	      
 	      </c:if>
 	      <c:if test="${sessionScope.userId != vo.id}">
 	        <button type="button" class="btn btn-danger" onclick="update()" disabled>수정</button>	      

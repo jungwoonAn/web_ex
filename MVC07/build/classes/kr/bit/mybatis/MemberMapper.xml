@@ -17,16 +17,22 @@
   <delete id="memberDelete" parameterType="Integer">
     delete from member1 where num=#{num}
   </delete>
+  <update id="memberDeleteFile" parameterType="Integer">
+    update member1 set filename=null where num=#{num}
+  </update>
   <select id="memberContent" parameterType="Integer" resultType="memberVO">
     select * from member1 where num=#{num}
   </select>
   <update id="memberUpdate" parameterType="memberVO">
-    update member1 set pass=#{pass}, email=#{email}, phone=#{phone} where num=#{num}
+    update member1 set pass=#{pass}, name=#{name}, age=#{age}, email=#{email}, phone=#{phone} where num=#{num}
+  </update>
+  <update id="memberUpdateFile" parameterType="MemberVO">
+    update member1 set pass=#{pass}, name=#{name}, age=#{age}, email=#{email}, phone=#{phone}, filename=#{filename} where num=#{num}
   </update>
   <select id="memberLogin" parameterType="memberVO" resultType="String">
     select name from member1 where id=#{id} and pass=#{pass}
   </select>
   <select id="memberDbcheck" parameterType="String" resultType="String">
     select id from member1 where id=#{id}
-  </select>
+  </select>  
 </mapper>
