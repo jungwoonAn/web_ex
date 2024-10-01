@@ -23,7 +23,7 @@
 <title>회원 목록</title>
 </head>
 <body>
-[MVC05 예제 - MyBatis]
+[SpringMVC01]
   <table class="table table-bordered">
     <thead>
       <tr>

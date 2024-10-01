@@ -163,7 +163,7 @@
 		<Context docBase="C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="C:\eGovFrame-4.2.0\workspace.edu\WEB\webapp" path="/web"/>
         
         
-      <Context docBase="C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SpringMVC01" path="/web01" reloadable="true" source="org.eclipse.jst.jee.server:SpringMVC01"/></Host>
+      <Context docBase="C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SpringMVC02" path="/web02" reloadable="true" source="org.eclipse.jst.jee.server:SpringMVC02"/></Host>
     </Engine>
   </Service>
 </Server>
