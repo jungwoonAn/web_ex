@@ -13,11 +13,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script type="text/javascript">
   function deleteFn(num){
 	  location.href="${ctx}/memberDelete.do?num="+num;
+  }
+  
+  function btnClick(){
+	  $.ajax({
+		  url: "<c:url value='/memberAjaxList.do' />",
+		  type: "get",
+		  dataType: "json",
+		  success: resultHtml,
+		  error: () => alert("error")
+	  })
+  }
+  
+  function resultHtml(data){
+	  console.log(data)
   }
 </script>
 <title>회원 목록</title>
@@ -55,8 +70,14 @@
       <td colspan="8" class="text-end">
         <button class="btn btn-primary" onclick="location.href='${ctx}/memberRegister.do'">회원가입</button>
       </td>
-    </tr> 
+    </tr>       
+    <tr>
+      <td colspan="8">
+      	<button type="button" class="btn btn-success" id="btn" onclick="btnClick()">Ajax로 회원리스트 보기</button>
+      </td>
+    </tr>
   </table>
+  <div id="list">여기에 회원리스트 출력</div>
 
 </body>
 </html>
