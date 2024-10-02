@@ -68,6 +68,6 @@ public class MemberController {
 	public @ResponseBody List<MemberVO> memberAjaxList() {
 		List<MemberVO> list = memberMapper.memberList();
 		// $.ajax() -> callback함수로 응답 -> JSON
-		return list;  // Object -> JSON : @ResponseBody -> API - jackson-databind API
+		return list;  // Object -> JSON : @ResponseBody -> (jackson-databind) API
 	}
 }
