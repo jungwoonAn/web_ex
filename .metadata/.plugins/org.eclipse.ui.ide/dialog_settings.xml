@@ -43,8 +43,11 @@
 		<item key="WizardProjectsImportPage.STORE_CLOSE_CREATED_PROJECTS_ID" value="false"/>
 		<item key="WizardProjectsImportPage.STORE_HIDE_CONFLICTING_PROJECTS_ID" value="false"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
-			<item value="C:\eGovFrame-4.2.0\workspace.edu\MVC05"/>
+			<item value="C:\eGovFrame-4.2.0\workspace.edu\Servers"/>
+			<item value="C:\eGovFrame-4.2.0\workspace.edu\SpringMVC01"/>
 			<item value="C:\eGovFrame-4.2.0\workspace.edu\SpringMVCStart"/>
+			<item value="C:\eGovFrame-4.2.0\workspace.edu\SpringMVC02"/>
+			<item value="C:\eGovFrame-4.2.0\workspace.edu\MVC05"/>
 			<item value="C:\eGovFrame-4.2.0\workspace.edu\MVC04"/>
 		</list>
 		<list key="WizardProjectsImportPage.STORE_ARCHIVES">

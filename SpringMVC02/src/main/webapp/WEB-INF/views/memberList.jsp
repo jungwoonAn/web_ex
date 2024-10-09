@@ -1,6 +1,5 @@
 <%@page import="kr.bit.model.MemberVO"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="kr.bit.model.MemberDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
@@ -33,6 +32,33 @@
   
   function resultHtml(data){
 	  console.log(data)
+	  let html='<table class="table table-bordered">';
+	  html+='<thead>';
+	  html+='<tr>';
+	  html+='<th>번호</th>';
+	  html+='<th>아이디</th>';
+	  html+='<th>비밀번호</th>';
+	  html+='<th>이름</th>';
+	  html+='<th>나이</th>';
+	  html+='<th>이메일</th>';
+	  html+='<th>전화번호</th>';
+	  html+='</tr>';     
+	  html+='</thead>';
+	  html+='<tbody>';	  
+	  $.each(data, function(i, obj){
+		  html+='<tr>';
+		  html+='<td>'+obj.num+'</td>';
+		  html+='<td>'+obj.id+'</td>';
+		  html+='<td>'+obj.pass+'</td>';
+		  html+='<td>'+obj.name+'</td>';
+		  html+='<td>'+obj.age+'</td>';
+		  html+='<td>'+obj.email+'</td>';
+		  html+='<td>'+obj.phone+'</td>';
+		  html+='</tr>';
+	  })	   
+	  html+='</tbody>';
+	  html+='</table>';
+	  $('#list').html(html);
   }
 </script>
 <title>회원 목록</title>
