@@ -1,7 +1,0 @@
-INDEX VERSION 1.131
-C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3799312736.index
-\SpringMVC02\src\main\java
-C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4049391635.index
-\SpringMVC01\src\main\java
-C:\eGovFrame-4.2.0\workspace.edu\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1896964849.index
-\SpringMVCStart\src\main\java
